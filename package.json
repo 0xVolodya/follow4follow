@@ -6,7 +6,8 @@
   "scripts": {
     "create-dev-tables": "babel-node ./app/db/dev/dbConnection createAllTables",
     "start": "nodemon --watch . --exec babel-node -- server",
-    "setup": "npm-run-all -p start create-dev-tables"
+    "setup": "npm-run-all -p start create-dev-tables",
+    "migrate": "babel-node app/migrations"
   },
   "author": "volodya",
   "license": "ISC",

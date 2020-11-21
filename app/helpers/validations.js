@@ -2,6 +2,16 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import config from '../../config';
+
+export {
+  hashPassword,
+  comparePassword,
+  isValidEmail,
+  isEmpty,
+  empty,
+  generateUserToken,
+};
+
 /**
  * Hash Password Method
  * @param {string} password
@@ -32,27 +42,14 @@ const isValidEmail = (email) => {
 };
 
 /**
- * validatePassword helper method
- * @param {string} password
- * @returns {Boolean} True or False
- */
-const validatePassword = (password) => {
-  if (password.length <= 5 || password === '') {
-    return false;
-  } return true;
-};
-/**
  * isEmpty helper method
  * @param {string, integer} input
  * @returns {Boolean} True or False
  */
 const isEmpty = (input) => {
-  if (input === undefined || input === '') {
-    return true;
-  }
-  if (input.replace(/\s/g, '').length) {
-    return false;
-  } return true;
+  if (input === undefined || input === '') return true;
+  if (input.replace(/\s/g, '').length)  return false;
+  return true;
 };
 
 /**
@@ -71,25 +68,12 @@ const empty = (input) => {
  * @param {string} id
  * @returns {string} token
  */
-const generateUserToken = (email, id, is_admin, first_name, last_name) => {
+const generateUserToken = (email, id, is_admin) => {
   const token = jwt.sign({
       email,
       user_id: id,
       is_admin,
-      first_name,
-      last_name,
     },
     config.secret, { expiresIn: '3d' });
   return token;
-};
-
-
-export {
-  hashPassword,
-  comparePassword,
-  isValidEmail,
-  validatePassword,
-  isEmpty,
-  empty,
-  generateUserToken,
 };

@@ -6,6 +6,7 @@ import {
 } from '../helpers/status';
 
 dotenv.config();
+export default verifyToken;
 
 /**
  * Verify Token
@@ -14,7 +15,6 @@ dotenv.config();
  * @param {object} next
  * @returns {object|void} response object
  */
-
 const verifyToken = async (req, res, next) => {
   const { token } = req.headers;
   if (!token) {
@@ -27,8 +27,6 @@ const verifyToken = async (req, res, next) => {
       email: decoded.email,
       user_id: decoded.user_id,
       is_admin: decoded.is_admin,
-      first_name: decoded.first_name,
-      last_name: decoded.last_name,
     };
     next();
   } catch (error) {
@@ -37,4 +35,3 @@ const verifyToken = async (req, res, next) => {
   }
 };
 
-export default verifyToken;

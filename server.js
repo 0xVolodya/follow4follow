@@ -3,6 +3,7 @@ import 'babel-polyfill';
 import cors from 'cors';
 import config from './config';
 import usersRoute from './app/routes/user';
+var bodyParser = require('body-parser')
 
 const app = express();
 
@@ -12,7 +13,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.use('/api/v1', usersRoute);
+app.use('/api', usersRoute);
 
 
 app.listen(config.port).on('listening', () => {
