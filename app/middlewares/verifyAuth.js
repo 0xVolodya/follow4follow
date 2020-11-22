@@ -6,7 +6,6 @@ import {
 } from '../helpers/status';
 
 dotenv.config();
-export default verifyToken;
 
 /**
  * Verify Token
@@ -34,4 +33,6 @@ const verifyToken = async (req, res, next) => {
     return res.status(status.unauthorized).send(errorMessage);
   }
 };
+
+export default verifyToken;
 

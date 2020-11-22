@@ -3,15 +3,6 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import config from '../../config';
 
-export {
-  hashPassword,
-  comparePassword,
-  isValidEmail,
-  isEmpty,
-  empty,
-  generateUserToken,
-};
-
 /**
  * Hash Password Method
  * @param {string} password
@@ -76,4 +67,13 @@ const generateUserToken = (email, id, is_admin) => {
     },
     config.secret, { expiresIn: '3d' });
   return token;
+};
+
+export {
+  hashPassword,
+  comparePassword,
+  isValidEmail,
+  isEmpty,
+  empty,
+  generateUserToken,
 };

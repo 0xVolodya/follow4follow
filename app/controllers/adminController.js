@@ -1,10 +1,5 @@
 import moment from 'moment';
 
-export {
-  createAdmin,
-  updateUserToAdmin,
-};
-
 import db from '../db';
 
 import {
@@ -117,4 +112,9 @@ const updateUserToAdmin = async (req, res) => {
     errorMessage.error = 'Operation was not successful';
     return res.status(status.error).send(errorMessage);
   }
+};
+
+export {
+  createAdmin,
+  updateUserToAdmin,
 };
